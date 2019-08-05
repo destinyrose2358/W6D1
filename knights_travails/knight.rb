@@ -1,9 +1,10 @@
 require_relative "../poly_tree_nodes/lib/00_tree_node.rb"
 require "byebug"
-class KnightPathFinder
 
+class KnightPathFinder
     attr_reader :root_node
     attr_accessor :considered_positions
+
 
     def initialize(pos)
         @root_node = PolyTreeNode.new(pos) 
@@ -11,9 +12,10 @@ class KnightPathFinder
     end
 
     def new_move_positions(pos)
+        #debugger
         possible_moves = KnightPathFinder.valid_moves(pos)
-        true_moves = possible_moves.reject { |position| considered_positions.include?(position)}
-        considered_positions += true_moves
+        true_moves = possible_moves.reject { |position| considered_positions.include?(position) }
+        self.considered_positions += true_moves
         true_moves
     end
 
@@ -44,19 +46,5 @@ class KnightPathFinder
         end
     end
 
-    # def bfs(target_value)
-    #     queue = [self]
-    #     until queue.empty?
-    #         current_node = queue.shift
-    #         if current_node.value == target_value
-    #             return current_node
-    #         else
-    #             queue.push(*current_node.children)
-    #         end
-    #     end
-    #     nil 
-    # end
-
-
-
+    
 end
